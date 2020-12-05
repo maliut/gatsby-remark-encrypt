@@ -63,7 +63,7 @@ Then you will find your `html` is encrypted, you can decrypt it use CryptoJS.
 import CryptoJS from 'crypto-js'
 
 if (post.frontmatter.password) {
-  const realHtml = CryptoJS.AES.decrypt(post.frontmatter.html, '123456').toString(CryptoJS.enc.Utf8)
+  const realHtml = CryptoJS.AES.decrypt(post.html, '123456').toString(CryptoJS.enc.Utf8)
 }
 ```
 
