@@ -3,7 +3,7 @@ Encrypt your markdown posts in Gatsby website.
 
 ## Install
 ``` bash
-npm install --save gatsby-renarj-encrypt crypto-js
+npm install --save gatsby-remark-encrypt crypto-js
 ```
 
 ## How to use
