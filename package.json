@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-encrypt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gatsby plugin to encrypt markdown posts",
   "main": "index.js",
   "scripts": {
