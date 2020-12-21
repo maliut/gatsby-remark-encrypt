@@ -36,9 +36,9 @@ Add `password` field in frontmatter of the post you want to encrypt.
   ---
 ```
 
-In your page query, add the `password` field to tell whether the post is encrypted.
+In your page query, add the `encrypted` field to tell whether the post is encrypted.
 
-The `password` field will be converted to boolean so there's no risk the raw password leak to others.
+NOTE: Do not query `password` in frontmatter, or the raw password may leaked in page-data.json.
 
 ``` diff
 // In your src/templates/post.js
@@ -50,7 +50,10 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "yyyy/MM/DD")
-+       password
+      }
+      fields {
+        slug
++       encrypted
       }
     }
   }
@@ -62,7 +65,7 @@ Then you will find your `html` is encrypted, you can decrypt it use CryptoJS.
 ``` javascript
 import CryptoJS from 'crypto-js'
 
-if (post.frontmatter.password) {
+if (post.fields.encrypted) {
   const realHtml = CryptoJS.AES.decrypt(post.html, '123456').toString(CryptoJS.enc.Utf8)
 }
 ```
@@ -106,7 +109,7 @@ const Encrypted = ({ html }) => {
 // in your template, decide to show encrypted view or normal view according to `frontmatter.password`
 export default ({ data }) => (
   ...
-  {post.frontmatter.password ? (
+  {post.fields.encrypted ? (
     <Encrypted html={post.html} />
   ) : (
     <section

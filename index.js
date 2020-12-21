@@ -26,10 +26,7 @@ module.exports = ({ markdownNode, markdownAST }, pluginOptions = {}) => {
       value: crypted,
     }]
 
-    // don't know how to access and modify frontmatter in plugin
-    // but as our test, you can simply modify it when key is exist
-    // however add a new key in frontmatter is not supported
-    markdownNode.frontmatter.password = true
+    console.log('success encrypt post: ' + markdownNode.frontmatter.title)
   }
 
   return markdownAST
