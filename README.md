@@ -106,7 +106,7 @@ const Encrypted = ({ html }) => {
   )
 }
 
-// in your template, decide to show encrypted view or normal view according to `frontmatter.password`
+// in your template, decide to show encrypted view or normal view according to `post.fields.encrypted`
 export default ({ data }) => (
   ...
   {post.fields.encrypted ? (
